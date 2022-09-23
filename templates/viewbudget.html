@@ -1,0 +1,38 @@
+{% extends 'common.html' %}
+
+{% block naveen %}
+<form action="{% url 'viewbudget_details' %}" method="post">
+    {% csrf_token %}
+<table align="center" border="0">
+    <tr>
+        <th>
+          From:<input type="date" name="d1" required>
+        </th>
+        <th>
+            To:<input type="date" name="d2" required>
+        </th>
+        <th ><button type="submit">Search</button></th>
+    </tr>
+
+</table>
+</form>
+<table align="center" border="2">
+    <tr>
+        <th>ID</th>
+        <th>CODE</th>
+        <th>AMOUNT</th>
+        <th>DATE</th>
+    </tr>
+
+        {% for x in data %}
+     <tr>
+        <td>{{x.id}}</td>
+        <td>{{x.code}}</td>
+        <td>{{x.amount}}</td>
+        <td>{{x.month}}</td>
+          </tr>
+        {% endfor %}
+
+
+</table>
+{% endblock %}
